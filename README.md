@@ -26,8 +26,9 @@ Basic idea:
 
 #### Software:
 
-|                                                 Requirement                                                 | Version |  Required Commands \*  |
+|                                                 Requirement                                                 | Version |   Required Commands    |
 |:-----------------------------------------------------------------------------------------------------------:|:-------:|:----------------------:|
+|                                          [curl](https://curl.se/)                                           |   \-    |         curl\*         |
 |                                    [Nextflow](https://www.nextflow.io/)                                     | 21.04.2 |         run\*          |
 |                                       [R](https://www.r-project.org/)                                       |  3.4.4  | See R scripts packages |
 |                                            [bedtools](bedtools)                                             | 2.27.1  |      intersect\*       |
@@ -88,48 +89,70 @@ For information about options and parameters, run:
 
 You must use a GFF file with the human miRNA coordinates, such as the one that can be downloaded from [miRBase](https://www.mirbase.org/ftp.shtml) at the following [link](https://www.mirbase.org/ftp/CURRENT/genomes/hsa.gff3):
 
-+------+---+--------------------------+-------+-------+---+----+---------------------------------------------------------------------------------------+
-| chr1 | . | miRNA_primary_transcript | 17369 | 17436 | . | \- | ###### ID=MI0022705;Alias=MI0022705;Name=hsa-mir-6859-1                               |
-+------+---+--------------------------+-------+-------+---+----+---------------------------------------------------------------------------------------+
-| chr1 | . | miRNA                    | 17409 | 17431 | . | \- | ###### ID=MIMAT0027618;Alias=MIMAT0027618;Name=hsa-miR-6859-5p;Derives_from=MI0022705 |
-+------+---+--------------------------+-------+-------+---+----+---------------------------------------------------------------------------------------+
-| chr1 | . | miRNA                    | 17369 | 17391 | . | \- | ###### ID=MIMAT0027619;Alias=MIMAT0027619;Name=hsa-miR-6859-3p;Derives_from=MI0022705 |
-+------+---+--------------------------+-------+-------+---+----+---------------------------------------------------------------------------------------+
+    21  . miRNA_primary_transcript  6859171 6859256 .   +   .   ID=MI0025905;Alias=MI0025905;Name=hsa-mir-8069-1
+    21  .   miRNA   6859224 6859246 .   +   .   ID=MIMAT0030996;Alias=MIMAT0030996;Name=hsa-miR-8069
+    21  .   miRNA_primary_transcript    8205315 8205406 .   +   .   ID=MI0022559;Alias=MI0022559;Name=hsa-mir-6724-1
+    21  .   miRNA   8205325 8205347 .   +   .   ID=MIMAT0025856;Alias=MIMAT0025856;Name=hsa-miR-6724-5p
 
 \*Note: The chromosomal notation of the GFF file and the VCF file must match
 
 ### Example Outputs
 
-You should get a TSV file with the SNPs from the VCF file within microRNA regions:
+-   A TSV file with the SNPs from the VCF file within microRNA regions:
 
-+-------+------------+--------+------+-------------------+----------+--------------------------------+
-| chrom | pos        | ref    | alt  | mir               | strand   | type                           |
-+=======+============+========+======+===================+==========+================================+
-| 21    | \| 1653912 | 7 \| A | \| T |     | hsa-mir-99a |     | \+ |     | miRNA_primary_transcript |
-+-------+------------+--------+------+-------------------+----------+--------------------------------+
-| 21    | 45478279   | G      | A    | hsa-miR-6815-5p   | | +      | | miRNA                        |
-+-------+------------+--------+------+-------------------+----------+--------------------------------+
-| 21    | 41746830   | C      | T    | hsa-miR-6814-5p   | \-       | miRNA_seed                     |
-+-------+------------+--------+------+-------------------+----------+--------------------------------+
+<!-- -->
 
-Also you should get a euler plot with the number SNPs in microRNA regions:
+    #chrom  pos ref alt mir strand  type
+    21  16539127    A   T   hsa-mir-99a +   miRNA_primary_transcript
+    21  16539128    G   A   hsa-mir-99a +   miRNA_primary_transcript
+    21  41746774    G   A   hsa-miR-6814-3p -   miRNA
+    21  45478279    G   A   hsa-miR-6815-5p +   miRNA
+    21  45478286    G   A   hsa-miR-6815-5p +   miRNA
+    21  16590295    A   G   hsa-miR-125b-2-3p   +   miRNA_seed
+
+-   Euler plot with the number SNPs in microRNA regions:
 
 ![](dev_notes/sample_out.png)
 
-Finally you will get a TSV file and a treemap plot of top 10 [HMDD v3.2](https://www.cuilab.cn/hmdd) miRNA-disease association data of the microRNAs with SNPs within the input VCF:
+A TSV file per miRNA region of [HMDD v3.2](https://www.cuilab.cn/hmdd) miRNA-disease association data of the microRNAs with SNPs within the input VCF:
 
-+--------------------------------------+----------------+------------------+----------+----------------+
-| category                             | mir            | disease          | pmid     | description    |
-+======================================+================+==================+==========+================+
-| circulation_biomarker_diagnosis_down | hsa-mir-125b-2 | Breast Neoplasms | 16466964 | down-regulated |
-+--------------------------------------+----------------+------------------+----------+----------------+
+    #category   mir disease pmid    description
+    circulation_biomarker_diagnosis_down    hsa-mir-125b-2  Breast Neoplasms    16466964    down-regulated
+    circulation_biomarker_diagnosis_down    hsa-mir-155 Neoplasms [unspecific]  16885332    High expression of precursor miR-155/BIC in pediatric BL, but lack of BIC and miR-155 expression in adult BL
+
+-   A treemap plot of top 10 diseases associated data of each microRNA region:
 
 ![](dev_notes/sample_out_primary.png)
 
 #### References
 
+Please include the following ciations in your work:
+
+-   Di Tommaso, Paolo, et al. "Nextflow enables reproducible computational workflows." *Nature biotechnology* 35.4 (2017): 316-319.
+
 -   *Lu M, Zhang Q, Deng M, Miao J, Guo Y, et al. (2008) An Analysis of Human MicroRNA and Disease Associations. PLoS ONE 3(10): e3420."and "Li Y, Qiu C, Tu J, Geng B, Yang J, Jiang T, Cui Q. HMDD v2.0: a database for experimentally supported human microRNA and disease associations. Nucleic Acids Res. 2014 Jan;42(Database issue):D1070-4.*
+
+-   Kozomara, A., Birgaoanu, M., & Griffiths-Jones, S. (2019). miRBase: from microRNA sequences to function. *Nucleic acids research*, *47*(D1), D155-D162.
+
+### Contact
+
+If you have questions, requests, or bugs to report, please email [jeduardogl655\@gmail.com](jeduardogl655@gmail.com)
 
 #### Autors
 
-José Eduardo García López
+-   **Bioinformatics Design**
+
+    José Eduardo García López [jeduardogl655\@gmail.com](jeduardogl655@gmail.com)
+
+-   **Bioinformatics Development**
+
+```{=html}
+<!-- -->
+```
+    José Eduardo García López [jeduardogl655\@gmail.com](jeduardogl655@gmail.com)
+
+-   **Nextflow Port**
+
+    José Eduardo García López [jeduardogl655\@gmail.com](jeduardogl655@gmail.com)
+
+    Israel Aguilar-Ordonez [iaguilaror\@gmail.com](iaguilaror@gmail.com)

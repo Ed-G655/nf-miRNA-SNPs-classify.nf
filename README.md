@@ -145,6 +145,7 @@ If you have questions, requests, or bugs to report, please email <jeduardogl655@
     José Eduardo García López <jeduardogl655@gmail.com>
 
 -   **Bioinformatics Development**
+    
     José Eduardo García López <jeduardogl655@gmail.com>
 
 -   **Nextflow Port**

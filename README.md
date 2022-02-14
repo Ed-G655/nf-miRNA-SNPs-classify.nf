@@ -16,7 +16,7 @@ Basic idea:
 
 ### Workflow overview
 
-![](dev_notes/Workflow.png){width="706"}
+![](dev_notes/Workflow.png)
 
 ## Requirements
 

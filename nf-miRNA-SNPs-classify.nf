@@ -23,6 +23,7 @@ Authors:
 
 - Nextflow Port
  Jose Eduardo Garcia-Lopez (jeduardogl655@gmail.com)
+ Israel Aguilar-Ordonez (iaguilaror@gmail)
 
 
 =============================

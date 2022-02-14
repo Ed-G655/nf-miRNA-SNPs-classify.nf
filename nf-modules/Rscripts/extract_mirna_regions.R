@@ -13,7 +13,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 #args[2] <- "test/results/sample.seed.bed" # output file
 
-## get the file with the miRNA targets and its changes
+## get the BED file
 bed_file <- args[1]
 
 ## pass to named objects

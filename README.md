@@ -16,7 +16,7 @@ Basic idea:
 
 ### Workflow overview
 
-![](dev_notes/Workflow.png){width="706"}
+![](dev_notes/Workflow.png)
 
 ## Requirements
 
@@ -136,23 +136,20 @@ Please include the following ciations in your work:
 
 ### Contact
 
-If you have questions, requests, or bugs to report, please email [jeduardogl655\@gmail.com](jeduardogl655@gmail.com)
+If you have questions, requests, or bugs to report, please email <jeduardogl655@gmail.com>
 
 #### Autors
 
 -   **Bioinformatics Design**
 
-    José Eduardo García López [jeduardogl655\@gmail.com](jeduardogl655@gmail.com)
+    José Eduardo García López <jeduardogl655@gmail.com>
 
 -   **Bioinformatics Development**
-
-```{=html}
-<!-- -->
-```
-    José Eduardo García López [jeduardogl655\@gmail.com](jeduardogl655@gmail.com)
+    
+    José Eduardo García López <jeduardogl655@gmail.com>
 
 -   **Nextflow Port**
 
-    José Eduardo García López [jeduardogl655\@gmail.com](jeduardogl655@gmail.com)
+    José Eduardo García López <jeduardogl655@gmail.com>
 
-    Israel Aguilar-Ordonez [iaguilaror\@gmail.com](iaguilaror@gmail.com)
+    Israel Aguilar-Ordonez <iaguilaror@gmail.com>

@@ -177,7 +177,7 @@ Useful functions definition
 */
 log.info"""
 ==========================================
-The ${pipeline_name}pipeline
+The ${pipeline_name} pipeline
 v${version}
 ==========================================
 """

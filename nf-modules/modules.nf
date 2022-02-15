@@ -160,8 +160,9 @@ process PLOT_ASSOCIATED_DISEASES {
 
 	shell:
 	"""
-	echo "Dowload database from HMDD https://www.cuilab.cn/hmdd"
-	curl -o HMDD_alldata.txt https://www.cuilab.cn/static/hmdd3/data/alldata.txt
+	echo "Dowload database from HMDD http://www.cuilab.cn/static/hmdd3/data/alldata.txt"
+	curl -o HMDD_alldata.txt http://www.cuilab.cn/static/hmdd3/data/alldata.txt \
+	 || wget -O HMDD_alldata.txt http://www.cuilab.cn/static/hmdd3/data/alldata.txt
 	Rscript --vanilla ${R_script_3} ${mirna_snps} ${mirna_snps.baseName}
 	"""
 	stub:
